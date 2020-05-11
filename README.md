@@ -26,7 +26,12 @@ sensor:
       friendly_name: Заражений в России
       icon_template: mdi:emoticon-neutral-outline
       unit_of_measurement: people
-      value_template: "{{ state_attr('sensor.yandex_covid', 'Россия')['cases'] }}"
+      value_template: "{{ state_attr('sensor.yandex_covid', 'Россия')['cases'] }}"      
+    covid_russia_current:
+      friendly_name: Болеющих в России
+      icon_template: mdi:emoticon-neutral-outline
+      unit_of_measurement: people
+      value_template: "{{ state_attr('sensor.yandex_covid', 'Россия')['cases'] - state_attr('sensor.yandex_covid', 'Россия')['cured'] - state_attr('sensor.yandex_covid', 'Россия')['deaths'] }}"
     covid_russia_cured:
       friendly_name: Выздоровлений в России
       icon_template: mdi:emoticon-happy-outline
